@@ -20,6 +20,10 @@ In this project, PEFT (Parallel Efficient Transformers) and LORA (Locally Recurr
 
 Due to resource constraints, the model was quantized in 8-bit format using model quantization techniques. Quantization reduces the model size and memory footprint, making it more feasible to deploy on devices with limited resources. The chatbot achieved satisfactory performance with the quantized model, allowing it to run efficiently on systems with lower RAM and GPU capacity.
 
+## Model Training Environment
+
+The model was trained on Google Colab, utilizing a virtual machine with 12GB CPU and 12GB T4 GPU RAM. Despite the resource limitations, the model training process yielded desirable results, demonstrating the effectiveness of the applied techniques in creating a functional and resource-efficient chatbot.
+
 ## Drawbacks of Model Quantization
 
 While 8-bit model quantization provides significant benefits in terms of model size and resource consumption, it may result in a slight decrease in the model's precision and accuracy. The quantized model might not retain the exact same performance as the full-precision model. However, for the purposes of this project and the target application, the trade-off in performance is acceptable given the hardware constraints.
