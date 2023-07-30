@@ -68,4 +68,15 @@ We encourage further exploration and improvement of the chatbot by leveraging la
 
 Finally, we express our gratitude to cofactoryai for their invaluable contribution by providing the frontend interface for the application, ensuring a user-friendly experience for the Mental Health Support Chatbot.
 
-**Important Note: The chatbot is not a substitute for professional mental health advice or therapy. Users with severe mental health concerns should seek help from qualified professionals.**
+**Note: The chatbot is not a substitute for professional mental health advice or therapy. Users with severe mental health concerns should seek help from qualified professionals.**
+
+
+**Important Note:**
+
+Running `runApp.py` may take some time, depending on your internet bandwidth, because the LLaMA model and its configuration need to be downloaded. The LLaMA model is about 6GB in size, and the download time will vary based on the speed of your internet connection.
+
+Please be patient during the download process, and ensure that you have a stable and fast internet connection to minimize the waiting time. Once the model is downloaded, subsequent runs of the application will be faster, as the model will be cached locally on your system.
+
+If you encounter any issues during the download or if the process takes longer than expected, please check your internet connection and ensure that you have sufficient storage space on your system to accommodate the model files.
+
+Feel free to reach out for assistance or any questions you may have during the setup and running of the application. Enjoy exploring the capabilities of the LLaMA model for Mental Health Support Chatbot!
