@@ -1,37 +1,67 @@
 # Mental Health Support Chatbot Project
 
-## Introduction
+This project focuses on building a Mental Health Support Chatbot using state-of-the-art technologies, including Llama 3B language model, PEFT, LORA, and 8-bit model quantization. The chatbot aims to provide empathetic and non-judgmental responses to individuals seeking mental health advice, promoting emotional well-being and support. The project comprises Data Preparation, Model Training, and Quantization of the Model.
 
-The Mental Health Support Chatbot project aims to develop an empathetic and non-judgmental chatbot that provides guidance and support to individuals seeking mental health advice. The chatbot utilizes a language model trained on a diverse dataset containing conversations related to mental health from various sources.
+## Data Preparation
 
-## Data Collection and Preprocessing
+The data preparation phase involved collecting and preprocessing a dataset containing mental health conversations from various sources. The dataset consists of 6,365 rows of dialogues related to mental health. To ensure optimal training, the dataset was cleaned and formatted, removing noise, special characters, and irrelevant information.
 
-The dataset used for training the chatbot was collected from mental health forums, support groups, and online communities. It comprises 6,365 rows of conversations between users and the chatbot assistant. The data was loaded from a CSV file and underwent several preprocessing steps:
+To enhance the model's performance, data augmentation techniques were employed. Domain-specific language models were utilized to generate additional conversation examples, enabling the chatbot to respond effectively to a wider range of user queries.
 
-1. **Removing Unnecessary Columns**: Columns such as `questionID`, `questionTitle`, `topic`, and `therapistInfo` were removed as they were not relevant for the chatbot's development.
+## Model Training
 
-2. **Extracting Human and Assistant Text**: The conversation text was split into parts spoken by the human user and the chatbot assistant, allowing for better organization of data.
+For the model training, the Llama 3B language model was chosen due to its exceptional performance in natural language understanding. The model was fine-tuned on the prepared mental health dataset using hyperparameters such as batch size, learning rate, and gradient accumulation steps. The training process aimed to optimize the model's ability to generate appropriate and supportive responses based on user prompts.
 
-3. **Cleaning Text**: Basic text cleaning was performed to eliminate unwanted characters and symbols.
+## PEFT and LORA
 
-4. **Splitting Data into Questions and Answers**: The dataset was divided into input questions and corresponding chatbot-generated answers to form input-output pairs for model training.
+In this project, PEFT (Parallel Efficient Transformers) and LORA (Locally Recurrent Adaptive Mechanism) techniques were incorporated to enhance the model's efficiency and performance. PEFT improves the model's scalability and training speed on multi-GPU systems. LORA, on the other hand, enhances the model's ability to capture long-range dependencies in the conversation context.
 
-## Model Architecture and Training
+## Model Quantization
 
-The chatbot utilizes the `LlamaForCausalLM` model from the OpenLM research repository. The model is pretrained on a large corpus of text data and further optimized for int8 training using Progressive Encoder-Freezing Training (PEFT). The PEFT components help enhance the model's performance during training.
+Due to resource constraints, the model was quantized in 8-bit format using model quantization techniques. Quantization reduces the model size and memory footprint, making it more feasible to deploy on devices with limited resources. The chatbot achieved satisfactory performance with the quantized model, allowing it to run efficiently on systems with lower RAM and GPU capacity.
 
-The model training involves tokenization of the input data and generating instructions, inputs, and responses for each data point. The `transformers.Trainer` class is used to handle the training process, including batch processing, data collation, and logging.
+## Drawbacks of Model Quantization
 
-## Result and Deployment
+While 8-bit model quantization provides significant benefits in terms of model size and resource consumption, it may result in a slight decrease in the model's precision and accuracy. The quantized model might not retain the exact same performance as the full-precision model. However, for the purposes of this project and the target application, the trade-off in performance is acceptable given the hardware constraints.
 
-After training the chatbot on the mental health dataset, the final model is saved in the "Mentalhealth_chatbot" directory. The trained model is ready for deployment to provide mental health support and guidance to users seeking assistance with their emotional well-being.
+## How to Run the Application
 
-## Acknowledgements
+To experience the Mental Health Support Chatbot application, follow these steps:
 
-We would like to extend our heartfelt thanks to **CofactoryAI** for providing the frontend tool **textbase**. Their easy-to-use chatbot UI greatly simplified the development process, allowing us to focus on building the chatbot's functionalities without worrying about the UI. We truly appreciate their contribution to the project.
+Step 1: Install the required dependencies by executing the following command in your terminal or command prompt:
+
+```bash
+pip install -r requirements.txt
+```
+
+Step 2: Execute the `runApp.py` script:
+
+```bash
+python runApp.py
+```
+
+Please note that the application requires a minimum system specification of 8 GB RAM and 6 GB of GPU to run efficiently.
+
+## Test Prompts
+
+Here are some example prompts that were tested on the Mental Health Support Chatbot:
+
+1. "I've been feeling really anxious lately. What should I do to cope with it?"
+
+2. "I'm feeling hopeless and don't see any point in living anymore."
+
+3. "I can't sleep at night, and it's affecting my daily life."
+
+4. "I'm having trouble concentrating, and I feel so overwhelmed."
+
+5. "My friend told me they're feeling suicidal. What can I do to help them?"
 
 ## Conclusion
 
-The Mental Health Support Chatbot project successfully developed a chatbot capable of empathetically responding to users' mental health concerns. Although data preparation and model training could be further refined, the project achieved its primary goal of building a supportive and non-judgmental resource for individuals seeking mental health advice.
+The Mental Health Support Chatbot project showcases the successful implementation of advanced technologies like PEFT, LORA, and 8-bit model quantization to build an efficient and supportive chatbot. While the model's quantization presents some trade-offs, it allows the chatbot to run effectively on devices with limited resources, making it accessible to a broader audience.
 
-The trained chatbot can be integrated into various platforms, such as websites and mobile applications, to offer valuable support and guidance to users on their journey to emotional well-being. The project contributes to the advancement of AI-driven mental health support and showcases the potential of language models in delivering empathetic and helpful responses to sensitive topics.
+We encourage further exploration and improvement of the chatbot by leveraging larger and more diverse datasets and fine-tuning hyperparameters. Additionally, user feedback and continuous development will help enhance the chatbot's capabilities, providing better mental health support to users.
+
+Finally, we express our gratitude to cofactoryai for their invaluable contribution by providing the frontend interface for the application, ensuring a user-friendly experience for the Mental Health Support Chatbot.
+
+**Important Note: The chatbot is not a substitute for professional mental health advice or therapy. Users with severe mental health concerns should seek help from qualified professionals.**
