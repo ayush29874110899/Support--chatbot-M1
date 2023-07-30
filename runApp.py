@@ -14,7 +14,7 @@ tokenizer = LlamaTokenizer.from_pretrained("openlm-research/open_llama_3b")
 model = LlamaForCausalLM.from_pretrained(
     "openlm-research/open_llama_3b",
     load_in_8bit=True,
-    device_map="auto",
+    device_map="cpu", #Change to CPU or auto based on the system specification
 )
 model = PeftModel.from_pretrained(model, "PrinceAyush/Support-chatbot-llama7b")
 
