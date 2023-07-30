@@ -9,6 +9,10 @@ PROMPT = """Below is the instruction.As a Mental Health Support Chatbot, your pr
    {}
 ### Response:"""
 
+
+# Set the device to CPU explicitly
+torch.device("cpu")
+
 # Load Tokenizer and Model
 tokenizer = LlamaTokenizer.from_pretrained("openlm-research/open_llama_3b")
 model = LlamaForCausalLM.from_pretrained(
@@ -27,7 +31,7 @@ def chat_bot(txt):
     if torch.cuda.is_available():
         input_ids = inputs["input_ids"].cuda()
     else:
-        input_ids = inputs["input_ids"]
+        input_ids = inputs["input_ids"].cpu()
 
     generation_config = GenerationConfig(
         temperature=0.6,
